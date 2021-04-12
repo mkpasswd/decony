@@ -1,0 +1,26 @@
+{
+  "name": "decony",
+  "version": "1.0.0",
+  "description": "Deconz web services access tools",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/mkpasswd/decony.git"
+  },
+  "keywords": [
+    "DeConz",
+    "WS"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mkpasswd/decony/issues"
+  },
+  "homepage": "https://github.com/mkpasswd/decony#readme",
+  "dependencies": {
+    "jquery": "^3.6.0"
+  }
+}
