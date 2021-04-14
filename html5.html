@@ -33,8 +33,9 @@ $(function() {
 	$('#t').append(conf.DCBASE+" DCBASE\n");
 	$('#t').append(conf.DCKEY+" DCKEY\n");
 	ZIG.dump();
+	ZIG.setDebug(true);
 
-	$.ajaxSetup({
+/*	$.ajaxSetup({
 		//crossDomain: false
 		dataType: 'json',
 		timeout: 5000,
@@ -49,6 +50,8 @@ $(function() {
 			console.log(ret);
 			$('#t').append(JSON.stringify(ret));
 			});			
+*/
+	ZIG.call('GET','/config');
 	});
 // $('#t').append(conf.DCBASE+' DCBASE<BR>');
 // $('#t').append(conf.DCKEY+' DCKEY<BR>');

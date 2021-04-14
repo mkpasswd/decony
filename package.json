@@ -21,8 +21,6 @@
   },
   "homepage": "https://github.com/mkpasswd/decony#readme",
   "dependencies": {
-    "grunt-cli": "^1.4.2",
-    "help": "^3.0.2",
     "jquery": "^3.6.0"
   }
 }
