@@ -26,18 +26,37 @@ $(function() {
 	});
 */
 </SCRIPT>
-<script src="bundle.js"></script>
+<script src="bundle-min.js"></script>
 <script>
 $(function() {
-	$('#D1').slideDown();
+	// $('#D1').slideDown();
+	$('#t').append(conf.DCBASE+" DCBASE\n");
+	$('#t').append(conf.DCKEY+" DCKEY\n");
+	ZIG.dump();
+
+	$.ajaxSetup({
+		//crossDomain: false
+		dataType: 'json',
+		timeout: 5000,
+		error: function(xhr,textStatus,errorThrown) {
+			console.log('Foirage '+textStatus+', '+errorThrown);
+			}
+		});
+	
+	$.get(conf.DCBASE+'/'+conf.DCKEY+'/config',{},
+		function(ret,textStatus) {
+			console.log('RET WS '+textStatus);
+			console.log(ret);
+			$('#t').append(JSON.stringify(ret));
+			});			
 	});
+// $('#t').append(conf.DCBASE+' DCBASE<BR>');
+// $('#t').append(conf.DCKEY+' DCKEY<BR>');
 </script>
+<PRE id="t">
+</PRE>
 <DIV id="D1" hidden>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Occultum facinus esse potuerit, gaudebit; Habes, inquam, Cato, formam eorum, de quibus loquor, philosophorum. Nec vero pietas adversus deos nec quanta iis gratia debeatur sine explicatione naturae intellegi potest. <i>Prioris generis est docilitas, memoria;</i> Nunc haec primum fortasse audientis servire debemus. Ille vero, si insipiens-quo certe, quoniam tyrannus -, numquam beatus; Quid ergo attinet dicere: Nihil haberem, quod reprehenderem, si finitas cupiditates haberent? Nummus in Croesi divitiis obscuratur, pars est tamen divitiarum. </p>
-
-<p>Duo Reges: constructio interrete. Quid est igitur, inquit, quod requiras? Potius inflammat, ut coercendi magis quam dedocendi esse videantur. Utinam quidem dicerent alium alio beatiorem! Iam ruinas videres. Nisi autem rerum natura perspecta erit, nullo modo poterimus sensuum iudicia defendere. </p>
-
-<p>Sed ad bona praeterita redeamus. Cum autem negant ea quicquam ad beatam vitam pertinere, rursus naturam relinquunt. <b>Cum id fugiunt, re eadem defendunt, quae Peripatetici, verba.</b> <b>Satis est ad hoc responsum.</b> <b>Respondeat totidem verbis.</b> Laelius clamores sofòw ille so lebat Edere compellans gumias ex ordine nostros. Diodorus, eius auditor, adiungit ad honestatem vacuitatem doloris. <a href="http://loripsum.net/" target="_blank">Falli igitur possumus.</a> </p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Occultum facinus esse potuerit, gaudebit; Habes, inquam, Cato, formam eorum, de quibus loquor, philosophorum. Nec vero pietas adversus deos nec quanta iis gratia debeatur sine explicatione naturae intellegi potest. <i>Prioris generis est docilitas, memoria;</i></p>
 </DIV>
 </body>
 </html>
