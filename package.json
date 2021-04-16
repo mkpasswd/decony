@@ -22,6 +22,7 @@
   "homepage": "https://github.com/mkpasswd/decony#readme",
   "dependencies": {
     "jquery": "^3.6.0",
+    "jquery-ui-bundle": "^1.12.1-migrate",
     "mustache": "^4.2.0"
   }
 }
