@@ -3,8 +3,9 @@ $=require('jquery');
 conf=require('./deconz-config.js');
 ZIG=require('./deconz.js');
 ZIG.setup(conf.DCBASE,conf.DCKEY);
+Mustache=require('mustache'); 
 
-console.log('Debut index.js browserifié npx browserify decony.js | minify --type js > bundle-min.js');
+// console.log('Debut index.js browserifié npx browserify decony.js | minify --type js > bundle-min.js');
 // console.log($);
 /*
 $(function() {

@@ -4,7 +4,7 @@ ZIG.errn=0;
 ZIG.errstr='';
 ZIG.debug=false;
 
-// ZIG.debline=function(s) {if(this.debug) console.log('## '+s);};
+ZIG.debline=function(s) {if(this.debug) console.log('## '+s);};
 
 ZIG.setDebug=function(b) {
 	this.debug=b;
@@ -42,21 +42,31 @@ ZIG.foirage=function(xhr,textStatus,errorThrown) {
 	};
 
 ZIG.defaultSuccess=function(ret,textStatus) {
-	console.log('WS success');
-	this.debline(ret);
+	console.log('ZIG WS success '+textStatus);
+	if(ZIG.debug) console.log(ret);
 	};
 
-ZIG.call=function(method,ws,f=this.defaultSuccess,content=null) {
+ZIG.call=function(method,ws,f,content=null) {
 	parms={};
 	parms.method=method;
+	console.log(f);
 	if(content!=null) parms.data=JSON.stringify(content);
-	if(typeof f=='function') parms.success=f;
+	if((typeof f)=='function') parms.success=f;
+	else parms.success=this.defaultSuccess;
+	console.log(this.defaultSuccess);
+	console.log(parms.success);
 	var url=this.BASE+'/'+this.KEY+ws,parms;
 	this.debline('Calling '+url+' ('+method+')')
 	$.ajax(url,parms);
 	}
 
+module.exports=ZIG;
+
+/*
 module.exports = {
+	defaultSuccess: ZIG.defaultSuccess,
+	foirage: ZIG.foirage,
+	debline: ZIG.debline,
 	setup: ZIG.setup,
 	dump: ZIG.dump,
 	getErrStr: ZIG.getErrStr,
@@ -69,4 +79,4 @@ module.exports = {
 	deconne: ZIG.deconne,
 	wtf: ZIG.wtf	
 	};
-
+*/

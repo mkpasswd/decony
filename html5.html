@@ -28,6 +28,10 @@ $(function() {
 </SCRIPT>
 <script src="bundle-min.js"></script>
 <script>
+function f(ret) {
+	console.log(ret);
+	};
+
 $(function() {
 	// $('#D1').slideDown();
 	$('#t').append(conf.DCBASE+" DCBASE\n");
@@ -51,6 +55,7 @@ $(function() {
 			$('#t').append(JSON.stringify(ret));
 			});			
 */
+	
 	ZIG.call('GET','/config');
 	});
 // $('#t').append(conf.DCBASE+' DCBASE<BR>');
