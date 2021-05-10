@@ -57,6 +57,14 @@ DIV.toptitle IMG { float: left; /* margin: 2px 5px 2px 5px; */  }
 
 .ui-icon { display: inline-block;}
 
+FIELDSET.ro INPUT {background: rgba(128,128,128,.1);
+		/* user-select: none; */
+		}
+FIELDSET.fset LEGEND {
+	text-variant: small-caps;
+	font-weight: bold;
+	color: rgba(0,0,0,.6);
+	}
 FIELDSET.fset {
 	margin-left: 20%;
 	margin-right: 20%;

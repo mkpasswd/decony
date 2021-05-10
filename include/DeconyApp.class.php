@@ -17,8 +17,9 @@ $NOJS=(stripos($option,'NOJS')!==false);
 	<meta name="viewport" content="width=device-width">
 <? if(!$NOJS) { ?>
 	<script src="<?=SITE?>/include/bundle-min.js"></script>
+	<script src="<?=SITE?>/include/App.js.php"></script>
 <? }; ?>
-	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/themes/redmond/jquery-ui.css">	
+	<link rel="stylesheet" href="./node_modules/jquery-ui-themes/themes/redmond/jquery-ui.css">	
 	<link rel="stylesheet" href="<?=SITE?>/rsc/DeconyApp.css">
 </head>
 <BODY>
@@ -32,6 +33,8 @@ $NOJS=(stripos($option,'NOJS')!==false);
 <DIV class="toptitle ui-widget ui-widget-header ui-corner-all">
 <IMG src="<?=SITE?>/rsc/DeconyApp.png"><H1 class="toptitle"><?=APPNAME." $title"?></H1>
 </DIV>
+<PRE id="DUMP" hidden>
+</PRE>
 
 <?
 } 
@@ -45,7 +48,11 @@ function tailer() {
 <BR>
 <DIV class="BBUNCH">
 <Button class="LINK MM" data-dest="./sensors.php">Sensors</button>
+<Button class="LINK MM" data-dest="./scenes.php">Scenes</button>
+<Button class="LINK MM" data-dest="./groups.php">Groups</button>
 <Button class="LINK MM" data-dest="./lights.php">Lights</button>
+<Button class="LINK MM" data-dest="./rules.php">Rules</button>
+<Button class="LINK MM" data-dest="./config.php">Conf.</button>
 </DIV>
 </BODY>
 </HTML>

@@ -4,6 +4,40 @@ include '../mini.inc.php';
 ?>
 //<SCRIPT> //triggers vi's JS syntax higlighting
 
+jsondump=function(ret) {
+	//console.log(ret);
+	$('#DUMP').html(JSON.stringify(ret,null,2)).slideDown();
+	};
+
+plaindump=function(ret) {
+	//console.log(ret);
+	$('#DUMP').html(ret);
+	};
+
+tomustab=function(ret) {
+	var tab=[];
+	for (var prop in ret) {
+		if (ret.hasOwnProperty(prop)) {
+			var line=ret[prop];
+			line.id=prop;
+			tab.push(line)
+			};
+		};
+	return tab;
+	};
+
+TPLout=function(ret) {
+	// console.log(ret);
+	$('#OUT').html(Mustache.render($('#TPL').html(),ret));
+	$('#OUT').slideDown();
+	}
+
+arrayTPLout=function(ret) {
+	// console.log(ret);
+	$('#OUT TBODY').html(Mustache.render($('#TPL').html(),{rows: tomustab(ret)}));
+	$('#OUT').slideDown();
+	}
+
 function tsort(tid,header) {
 	console.log('TSORT -'+tid+'- -'+header+'-');
 	var i=0;
@@ -35,7 +69,7 @@ function tsort(tid,header) {
 
 $(function() {
 	$('.LINK').click(function() {window.location=$(this).data('dest');});
-	$('.TSORT').live('click',function(e) {
+	$('.TSORT').on('click',null,function(e) {
 		console.log('Click sort');
 		e.preventDefault();
 		var idtable=$(this).closest('TABLE').attr('id');
