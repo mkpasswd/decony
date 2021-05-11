@@ -23,6 +23,7 @@
   "dependencies": {
     "jquery": "^3.6.0",
     "jquery-ui-bundle": "^1.12.1-migrate",
+    "jquery-ui-themes": "^1.12.0",
     "mustache": "^4.2.0"
   }
 }
