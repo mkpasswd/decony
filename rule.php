@@ -3,16 +3,26 @@ include('./mini.inc.php');
 include('App.php');
 
 $title=T::gp('title','&lt;unset&gt;');
-$app->header("Light $title");
+$app->header("Rule $title");
 ?>
+
+<TEMPLATE id="CONDITION">
+</TEMPLATE>
 
 <TEMPLATE id='TPL'>
 <FIELDSET class="fset ro">
-<LEGEND>Light information</LEGEND>
+<LEGEND>Rule information</LEGEND>
 <LABEL>Name&nbsp;:</LABEL><INPUT readonly id="name" value="{{name}}"><BR>
-<LABEL>Model ID&nbsp;:</LABEL><INPUT readonly id="modelid" value="{{modelid}}"><BR>
-<LABEL>Type&nbsp;:</LABEL><INPUT readonly id="type" value="{{type}}"><BR>
-<LABEL>Last seen&nbsp;:</LABEL><INPUT readonly id="lastseen" value="{{lastseen}}"><BR>
+<LABEL>Status&nbsp;:</LABEL><INPUT readonly id="status" value="{{status}}"><BR>
+<LABEL>Period&nbsp;:</LABEL><INPUT readonly id="periodic" value="{{periodic}}"><BR>
+<LABEL>Triggered count&nbsp;:</LABEL><INPUT readonly id="type" value="{{timestriggered}}"><BR>
+<LABEL>Last triggered&nbsp;:</LABEL><INPUT readonly id="type" value="{{lasttriggered}}"><BR>
+<LABEL>Conditions&nbsp;:</LABEL><TABLE id="conditions">
+</TABLE><BR>
+<LABEL>Actions&nbsp;:</LABEL><TABLE id="actions">
+</TABLE><BR>
+
+<INPUT readonly id="lastseen" value="{{lastseen}}"><BR>
 <LABEL>On&nbsp;:</LABEL><INPUT readonly id="on" value="{{state.on}}"><BR>
 <LABEL>Reachable&nbsp;:</LABEL><INPUT readonly id="reachable" value="{{state.reachable}}"><BR>
 </FIELDSET>	

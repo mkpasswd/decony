@@ -53,6 +53,7 @@ function tailer() {
 <Button class="LINK MM" data-dest="./lights.php">Lights</button>
 <Button class="LINK MM" data-dest="./rules.php">Rules</button>
 <Button class="LINK MM" data-dest="./config.php">Conf.</button>
+<Button class="DEBUG" id="jsondump">jdump</button>
 </DIV>
 </BODY>
 </HTML>

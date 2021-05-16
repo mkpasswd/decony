@@ -4,6 +4,7 @@ include('App.php');
 $app->header('Lights');
 ?>
 
+<!-- ==== MUSTACHE TEMPLATE -->
 <TEMPLATE id='TPL'>
 {{#rows}}
 <TR id="{{id}}">
@@ -15,13 +16,13 @@ $app->header('Lights');
 <TD>{{state.presence}}</TD>
 </TR>
 {{/rows}}
-</TEMPLATE>
-
-<TEMPLATE id='nope'>
-<TR><TD colspan="4" class="info">Nope !</TD></TR>
+{{^rows}}
+<TR><TD colspan="5" class="info">Nope !</TD></TR>
+{{/rows}}
 </TEMPLATE>
 
 <BR>
+<!-- ==== TABLE HEADER -->
 <TABLE id="OUT" class="DEFSHOW" hidden>
 <THEAD>
 <TR><TH>name</TH><TH>modelid</TH><TH>reachable</TH><TH>battery</TH><TH>on</TH>
@@ -40,6 +41,7 @@ $app->header('Lights');
 $(function() {
 	ZIG.setDebug(true);
 	ZIG.call('GET','/lights',arrayTPLout);
+	// ZIG.call('GET','/lights',jsondump);
 	});
 </SCRIPT>
 <?

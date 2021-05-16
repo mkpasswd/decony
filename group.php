@@ -5,7 +5,12 @@ include('App.php');
 $title=T::gp('title','&lt;unset&gt;');
 $app->header("Group $title");
 ?>
+<!-- ==== DISPLAY ==================== -->
+<BR>
+<DIV id="OUT" class="DEFSHOW" hidden>
+</DIV>
 
+<!-- ==== TEMPLATE =================== -->
 <TEMPLATE id='TPL'>
 <FIELDSET class="fset ro">
 <LEGEND>Group information</LEGEND>
@@ -27,18 +32,14 @@ $app->header("Group $title");
 </FIELDSET>	
 </TEMPLATE>
 
-<BR>
-<DIV id="OUT" class="DEFSHOW" hidden>
-</DIV>
-
+<!-- ==== SCRIPT ==================== -->
 <SCRIPT>
-const urlParams=new URLSearchParams(window.location.search);
-var id=urlParams.get('id');
-console.log(id);
+var WSPATH='/groups/'+DEVID;
+var WSMETH='GET';
 
 $(function() {
 	ZIG.setDebug(true);
-	ZIG.call('GET','/groups/'+id,TPLout);
+	ZIG.call(WSMETH,WSPATH,ajs.TPLout);
 	});
 </SCRIPT>
 <?

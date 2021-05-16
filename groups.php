@@ -3,22 +3,7 @@ include('./mini.inc.php');
 include('App.php');
 $app->header('Groups');
 ?>
-
-<TEMPLATE id='TPL'>
-{{#rows}}
-<TR id="{{id}}">
-<TD class= "name"><A href="./group.php?id={{id}}&title={{name}}">{{name}}</A></TD>
-<TD>{{type}}</TD>
-<TD>{{state.all_on}}</TD>
-<TD>{{state.any_on}}</TD>
-</TR>
-{{/rows}}
-</TEMPLATE>
-
-<TEMPLATE id='nope'>
-<TR><TD colspan="4" class="info">Nope !</TD></TR>
-</TEMPLATE>
-
+<!-- ==== DISPLAY ==================== -->
 <BR>
 <TABLE id="OUT" class="DEFSHOW" hidden>
 <THEAD>
@@ -29,10 +14,29 @@ $app->header('Groups');
 </TBODY>
 </TABLE>
 
+<!-- ==== TEMPLATE =================== -->
+<TEMPLATE id='TPL'>
+{{#rows}}
+<TR id="{{id}}">
+<TD class= "name"><A href="./group.php?id={{id}}&title={{name}}">{{name}}</A></TD>
+<TD>{{type}}</TD>
+<TD>{{state.all_on}}</TD>
+<TD>{{state.any_on}}</TD>
+</TR>
+{{/rows}}
+{{^rows}}
+<TR><TD colspan="5" class="NOENTRY">Nope !</TD></TR>
+{{/rows}}
+</TEMPLATE>
+
+<!-- ==== SCRIPT ==================== -->
 <SCRIPT>
+var WSPATH='/groups';
+var WSMETH='GET';
+
 $(function() {
-	ZIG.setDebug(true);
-	ZIG.call('GET','/groups',arrayTPLout);
+	// ZIG.setDebug(true);
+	ZIG.call(WSMETH,WSPATH,ajs.arrayTPLout);
 	});
 </SCRIPT>
 <?

@@ -1,20 +1,25 @@
 <?php
 include '../mini.inc.php';
+header('Content-type: text/javascript;charset=utf-8');
 // header('text/plain;charset=utf-8'); //php fpm : ERR 500 ??
 ?>
 //<SCRIPT> //triggers vi's JS syntax higlighting
+DEVID=(new URLSearchParams(window.location.search)).get('id');
 
-jsondump=function(ret) {
+//ajs = JS application wide singleton
+function ajs() {};
+
+ajs.jsondump=function(ret) {
 	//console.log(ret);
 	$('#DUMP').html(JSON.stringify(ret,null,2)).slideDown();
 	};
 
-plaindump=function(ret) {
+ajs.plaindump=function(ret) {
 	//console.log(ret);
 	$('#DUMP').html(ret);
 	};
 
-tomustab=function(ret) {
+ajs.tomustab=function(ret) {
 	var tab=[];
 	for (var prop in ret) {
 		if (ret.hasOwnProperty(prop)) {
@@ -26,15 +31,15 @@ tomustab=function(ret) {
 	return tab;
 	};
 
-TPLout=function(ret) {
+ajs.TPLout=function(ret) {
 	// console.log(ret);
 	$('#OUT').html(Mustache.render($('#TPL').html(),ret));
 	$('#OUT').slideDown();
 	}
 
-arrayTPLout=function(ret) {
+ajs.arrayTPLout=function(ret) {
 	// console.log(ret);
-	$('#OUT TBODY').html(Mustache.render($('#TPL').html(),{rows: tomustab(ret)}));
+	$('#OUT TBODY').html(Mustache.render($('#TPL').html(),{rows: ajs.tomustab(ret)}));
 	$('#OUT').slideDown();
 	}
 
@@ -67,6 +72,8 @@ function tsort(tid,header) {
 		});
 	}
 
+//===========================================
+//Global App-wide JS setup
 $(function() {
 	$('.LINK').click(function() {window.location=$(this).data('dest');});
 	$('.TSORT').on('click',null,function(e) {
@@ -77,5 +84,10 @@ $(function() {
 		// console.log("TABLE:"+idtable);
 		tsort('#'+idtable,$(this).html());
 		return false;
+		});
+	$('#jsondump').click(function() {
+		console.log('YO');
+		ZIG.setDebug(true);
+		ZIG.call(WSMETH,WSPATH,ajs.jsondump);
 		});
 	});

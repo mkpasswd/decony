@@ -4,7 +4,12 @@ include('App.php');
 
 $app->header("Config");
 ?>
+<!-- ==== DISPLAY ==================== -->
+<BR>
+<DIV id="OUT" class="DEFSHOW" hidden>
+</DIV>
 
+<!-- ==== TEMPLATE =================== -->
 <TEMPLATE id='TPL'>
 <FIELDSET class="fset ro">
 <LEGEND>Adapter information</LEGEND>
@@ -21,19 +26,18 @@ $app->header("Config");
 </UL><BR>
 </FIELDSET>	
 </TEMPLATE>
-
-<BR>
-<DIV id="OUT" class="DEFSHOW" hidden>
-</DIV>
-
+<!-- ==== SCRIPT ==================== -->
 <SCRIPT>
+var WSPATH='/config';
+var WSMETH='GET';
+
 show=function(ret) {
 	// console.log(ret);
-	ret.whitelist=tomustab(ret.whitelist);
-	TPLout(ret);
+	ret.whitelist=ajs.tomustab(ret.whitelist);
+	ajs.TPLout(ret);
 	};
 $(function() {
-	ZIG.setDebug(true);
+	// ZIG.setDebug(true);
 	ZIG.call('GET','/config',show);
 	});
 </SCRIPT>

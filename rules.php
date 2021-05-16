@@ -3,43 +3,40 @@ include('./mini.inc.php');
 include('App.php');
 $app->header('Rules');
 ?>
-
-<TEMPLATE id='TPL'>
-{{#rows}}
-<TR id="{{sensorid}}">
-<TD class= "name"><A href="./rule.php?id={{sensorid}}&title={{name}}">{{name}}</A></TD><TD>{{modelid}}</TD><TD>{{config.reachable}}</TD><TD>{{config.battery}}</TD><TD>{{config.on}}</TD>
-<TD>{{state.lastupdate}}</TD>
-<TD>{{state.lowbattery}}</TD>
-<TD>{{state.open}}</TD>
-<TD>{{state.temperature}}</TD>
-<TD>{{state.presence}}</TD>
-</TR>
-{{/rows}}
-</TEMPLATE>
-
-<TEMPLATE id='nope'>
-<TR><TD colspan="4" class="info">Nope !</TD></TR>
-</TEMPLATE>
-
+<!-- ==== DISPLAY ==================== -->
 <BR>
 <TABLE id="OUT" class="DEFSHOW" hidden>
 <THEAD>
-<TR><TH>name</TH><TH>modelid</TH><TH>reachable</TH><TH>battery</TH><TH>on</TH>
-<TH>lastupdated</TH>
-<TH>lowbattery</TH>
-<TH>open</TH>
-<TH>temperature</TH>
-<TH>presence</TH>
+<TR><TH>name</TH><TH>type</TH><TH>all_on</TH><TH>any_on</TH>
 </TR>
 </THEAD>
 <TBODY>
 </TBODY>
 </TABLE>
 
+<!-- ==== TEMPLATE =================== -->
+<TEMPLATE id='TPL'>
+{{#rows}}
+<TR id="{{id}}">
+<TD class= "name"><A href="./group.php?id={{id}}&title={{name}}">{{name}}</A></TD>
+<TD>{{type}}</TD>
+<TD>{{state.all_on}}</TD>
+<TD>{{state.any_on}}</TD>
+</TR>
+{{/rows}}
+{{^rows}}
+<TR><TD colspan="5" class="NOENTRY">Nope !</TD></TR>
+{{/rows}}
+</TEMPLATE>
+
+<!-- ==== SCRIPT ==================== -->
 <SCRIPT>
+var WSPATH='/rules';
+var WSMETH='GET';
+
 $(function() {
-	ZIG.setDebug(true);
-	ZIG.call('GET','/rules',jsondump);
+	// ZIG.setDebug(true);
+	ZIG.call(WSMETH,WSPATH,ajs.arrayTPLout);
 	});
 </SCRIPT>
 <?

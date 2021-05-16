@@ -5,6 +5,19 @@ body {
 	padding: 5px 5px 5px 5px;
 	} 
 
+#DUMP {
+	background-color: WhiteSmoke;
+	width: 80%;
+	margin-left: 5%;
+	}
+
+TD.NOENTRY {
+	font-weight: bold;
+	text-align: center;
+	color: silver;
+	font-style: italic;
+	}
+
 TEXTAREA.POP {
 	background-color: Azure;
 	margin-left: 2%;
@@ -28,6 +41,13 @@ TABLE.DEFSHOW TH.TSORT {background-color: rgb(100,100,100,.2);}
 
 BUTTON.MM { background-color: rgb(100,100,100,.2);
 	font-style: italic;
+	}
+	
+BUTTON.DEBUG {
+	color: tomato; 
+	background-color: rgb(100,100,100,.2);
+	font-style: italic;
+	font-size: smaller;
 	}
 	
 DIV.BBUNCH {
